@@ -1,0 +1,13 @@
+.nav {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+
+  select {
+    font-size: 30px;
+  }
+}
