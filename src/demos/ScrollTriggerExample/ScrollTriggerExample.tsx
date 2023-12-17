@@ -1,3 +1,4 @@
+import { PageTransitions } from '../../components'
 import './ScrollTriggerExample.scss'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -30,13 +31,15 @@ const ScrollTriggerExample: FC = () => {
   }, [])
 
   return (
-    <div className="ScrollTrigger">
-      <div className="section section section--green"></div>
-      <section className="section section--blue">
-        <div className="square"></div>
-      </section>
-      <div className="section section section--green"></div>
-    </div>
+    <PageTransitions>
+      <div className="ScrollTrigger">
+        <div className="section section section--green"></div>
+        <section className="section section--blue">
+          <div className="square"></div>
+        </section>
+        <div className="section section section--green"></div>
+      </div>
+    </PageTransitions>
   )
 }
 

@@ -1,3 +1,4 @@
+import { PageTransitions } from '../../components'
 import './HorizontalScroll.scss'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -32,19 +33,21 @@ const HorizontalScroll: FC = () => {
     })
   }, [])
   return (
-    <div className="HorizontalScroll">
-      <div className="section"></div>
-      <div className="races-wrapper">
-        <div className="races" ref={racesRef}>
-          <h2>Title 1</h2>
-          <h2>Title 2</h2>
-          <h2>Title 3</h2>
-          <h2>Title 4</h2>
-          <h2>Title 5</h2>
+    <PageTransitions>
+      <div className="HorizontalScroll">
+        <div className="section"></div>
+        <div className="races-wrapper">
+          <div className="races" ref={racesRef}>
+            <h2>Title 1</h2>
+            <h2>Title 2</h2>
+            <h2>Title 3</h2>
+            <h2>Title 4</h2>
+            <h2>Title 5</h2>
+          </div>
         </div>
+        <div className="section"></div>
       </div>
-      <div className="section"></div>
-    </div>
+    </PageTransitions>
   )
 }
 

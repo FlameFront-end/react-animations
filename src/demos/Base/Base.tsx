@@ -1,6 +1,7 @@
-import { FC, useLayoutEffect, useRef } from 'react'
+import { PageTransitions } from '../../components'
 import './Base.scss'
 import gsap from 'gsap'
+import { FC, useLayoutEffect, useRef } from 'react'
 
 const Base: FC = () => {
   const baseRef = useRef(null)
@@ -19,7 +20,7 @@ const Base: FC = () => {
   }
 
   return (
-    <>
+    <PageTransitions>
       <div className="base" ref={baseRef}>
         <div className="box-1">Box 1</div>
         <div className="box-2" ref={box2Ref}>
@@ -29,7 +30,7 @@ const Base: FC = () => {
           Click me
         </button>
       </div>
-    </>
+    </PageTransitions>
   )
 }
 
