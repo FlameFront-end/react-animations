@@ -1,22 +1,29 @@
-* {
-  cursor: none !important;
-  pointer-events: all;
-}
-
 .app {
   background-color: white;
 }
 
-
 .cursor {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #111;
-  z-index: 9999;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
+  display: none;
 }
+
+
+@media (hover: hover) {
+  * {
+    cursor: none !important;
+    pointer-events: all;
+  }
+
+  .cursor {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #111;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+}
+
