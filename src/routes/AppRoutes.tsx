@@ -9,7 +9,7 @@ const AppRoutes: FC = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route element={<Base />} path="/base" />
+        <Route element={<Base />} path="/" />
         <Route element={<HorizontalScroll />} path="/horizontal-scroll" />
         <Route element={<ScrollTriggerExample />} path="/scroll-trigger-example" />
       </Routes>

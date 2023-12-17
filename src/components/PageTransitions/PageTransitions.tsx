@@ -17,7 +17,7 @@ type Routes = {
 }
 
 const routes: Routes = {
-  '/base': 'Base',
+  '/': 'Base',
   '/horizontal-scroll': 'Horizontal Scroll',
   '/scroll-trigger-example': 'Scroll Trigger Example',
 }
