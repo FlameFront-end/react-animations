@@ -16,10 +16,6 @@ const ScrollTriggerExample: FC = () => {
         scrub: true,
         pin: true,
         toggleClass: 'square--active', // класс, когда работает анимация
-        markers: {
-          startColor: 'white',
-          endColor: 'white',
-        },
       },
     })
     tl.from('.square', {
