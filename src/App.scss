@@ -2,13 +2,15 @@
 	background-color: white;
 }
 
-.cursor {
-	display: none;
+@media (hover: none) {
+	.cursor {
+		display: none !important;
+	}
 }
 
 @media (hover: hover) {
 	* {
-		cursor: none !important;
+		cursor: none;
 		pointer-events: all;
 	}
 
@@ -25,3 +27,6 @@
 		pointer-events: none;
 	}
 }
+
+
+
