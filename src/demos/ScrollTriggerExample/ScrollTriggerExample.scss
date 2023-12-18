@@ -1,41 +1,41 @@
 .ScrollTrigger {
-  .section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+	.section {
+		position: relative;
+		width: 100%;
+		min-height: 100vh;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
 
-  .section--green {
-    background-color: #2c9e15;
-  }
+	.section--green {
+		background-color: #2c9e15;
+	}
 
-  .section--blue {
-    background-color: #2561d8;
-  }
+	.section--blue {
+		background-color: #2561d8;
+	}
 
-  .square {
-    width: 200px;
-    height: 200px;
-    background-color: #fff;
-    transition: border-radius 1s;
-  }
+	.square {
+		width: 200px;
+		height: 200px;
+		background-color: #fff;
+		transition: border-radius 1s;
+	}
 
-  .square--active {
-    border-radius: 20px;
-  }
+	.square--active {
+		border-radius: 20px;
+	}
 
-  img {
-    display: block;
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    top: calc(50% - 200px);
-    left: calc(50% - 200px);
-  }
+	img {
+		display: block;
+		width: 400px;
+		height: 400px;
+		position: absolute;
+		top: calc(50% - 200px);
+		left: calc(50% - 200px);
+	}
 }

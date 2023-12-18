@@ -1,29 +1,27 @@
 .app {
-  background-color: white;
+	background-color: white;
 }
 
 .cursor {
-  display: none;
+	display: none;
 }
-
 
 @media (hover: hover) {
-  * {
-    cursor: none !important;
-    pointer-events: all;
-  }
+	* {
+		cursor: none !important;
+		pointer-events: all;
+	}
 
-  .cursor {
-    display: block;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #111;
-    z-index: 9999;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-  }
+	.cursor {
+		display: block;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background-color: #111;
+		z-index: 9999;
+		position: fixed;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+	}
 }
-
