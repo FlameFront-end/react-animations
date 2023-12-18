@@ -2,13 +2,10 @@ import gsap from 'gsap'
 import { FC, useLayoutEffect, useRef } from 'react'
 
 import { PageTransitions } from '../../components'
-import { useCursorContext } from '../../context/CursorContext/CursorContext.tsx'
 
 import './Base.scss'
 
 const Base: FC = () => {
-	const { textEnter, textLeave } = useCursorContext()
-
 	const baseRef = useRef(null)
 	const box2Ref = useRef(null)
 
@@ -27,10 +24,6 @@ const Base: FC = () => {
 		gsap.fromTo(box2Ref.current, { rotation: 0 }, { rotation: 360 })
 	}
 
-	const handleBtnHover = (size: number) => {
-		textEnter(size)
-	}
-
 	return (
 		<PageTransitions>
 			<div className='base' ref={baseRef}>
@@ -38,12 +31,7 @@ const Base: FC = () => {
 				<div className='box-2' ref={box2Ref}>
 					Box 2
 				</div>
-				<button
-					className='btn'
-					onMouseEnter={() => handleBtnHover(100)}
-					onMouseLeave={textLeave}
-					onClick={() => handleClick()}
-				>
+				<button className='btn' onClick={() => handleClick()}>
 					Click me
 				</button>
 			</div>
