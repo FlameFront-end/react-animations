@@ -3,40 +3,12 @@ import { FC, ReactNode, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { useIsFirstRender } from '../../context/IsFirstRenderContext/IsFirstRenderContext.tsx'
+import { routes } from '../../routes/AppRoutes.tsx'
 
+import { anim } from './anim.ts'
+import { greetings } from './greetings.ts'
 import './PageTransitions.scss'
-
-const anim = (variants: Variants) => {
-	return {
-		initial: 'initial',
-		animate: 'enter',
-		exit: 'exit',
-		variants
-	}
-}
-
-type Routes = {
-	[key: string]: string
-}
-
-const routes: Routes = {
-	'/': 'Base',
-	'/horizontal-scroll': 'Horizontal Scroll',
-	'/scroll-trigger-example': 'Scroll Trigger Example'
-}
-
-const greetings = [
-	{ language: 'Английский', greeting: 'Hello' },
-	{ language: 'Французский', greeting: 'Bonjour' },
-	{ language: 'Испанский', greeting: 'Hola' },
-	{ language: 'Немецкий', greeting: 'Guten Tag' },
-	{ language: 'Итальянский', greeting: 'Ciao' },
-	{ language: 'Русский', greeting: 'Привет' },
-	{ language: 'Китайский', greeting: '你好' },
-	{ language: 'Японский', greeting: 'こんにちは' },
-	{ language: 'Арабский', greeting: 'مرحبا' },
-	{ language: 'Хинди', greeting: 'नमस्ते' }
-]
+import SVG from './SVG.tsx'
 
 interface CurveProps {
 	children: ReactNode
@@ -92,10 +64,10 @@ const PageTransitions: FC<CurveProps> = ({ children }) => {
 	return (
 		<div className='page curve'>
 			{isFirstRender ? (
-				<GreetingsComponent />
+				<Greetings />
 			) : (
 				<motion.div {...anim(text)} className='route'>
-					{routes[window.location.pathname]}
+					{routes.find(route => route.href === window.location.pathname)?.title}
 				</motion.div>
 			)}
 			<div
@@ -108,87 +80,9 @@ const PageTransitions: FC<CurveProps> = ({ children }) => {
 	)
 }
 
-interface SVGProps {
-	width: number
-	height: number
-}
-
-const SVG: FC<SVGProps> = ({ width, height }) => {
-	const { isFirstRender } = useIsFirstRender()
-
-	const initialPath = `
-    M0 300
-    Q${width / 2} 0 ${width} 300
-    L${width} ${height + 300}
-    Q${width / 2} ${height + 600} 0 ${height + 300}
-    L0 300
-  `
-
-	const targetPath = `
-    M0 300
-    Q${width / 2} 0 ${width} 300
-    L${width} ${height}
-    Q${width / 2} ${height} 0 ${height}
-    L0 300
-  `
-
-	const curve: Variants = {
-		initial: {
-			d: initialPath
-		},
-
-		enter: {
-			d: targetPath,
-			transition: {
-				duration: 0.75,
-				delay: isFirstRender ? (greetings.length * 300 + 100) / 1000 : 0.3,
-				ease: [0.76, 0, 0.24, 1]
-			}
-		},
-		exit: {
-			d: initialPath,
-			transition: {
-				duration: 0.75,
-				ease: [0.76, 0, 0.24, 1]
-			}
-		}
-	}
-
-	const slide: Variants = {
-		initial: {
-			top: '-300px'
-		},
-		enter: {
-			top: '-100vh',
-			transition: {
-				duration: 0.75,
-				delay: isFirstRender ? (greetings.length * 300 + 100) / 1000 : 0.3,
-				ease: [0.76, 0, 0.24, 1]
-			},
-			transitionEnd: {
-				top: '100vh'
-			}
-		},
-
-		exit: {
-			top: '-300px',
-			transition: {
-				duration: 0.75,
-				ease: [0.76, 0, 0.24, 1]
-			}
-		}
-	}
-
-	return (
-		<motion.svg {...anim(slide)}>
-			<motion.path {...anim(curve)}></motion.path>
-		</motion.svg>
-	)
-}
-
 export default PageTransitions
 
-const GreetingsComponent = () => {
+const Greetings = () => {
 	const [currentGreeting, setCurrentGreeting] = useState(greetings[0].greeting)
 	useEffect(() => {
 		let count = 1

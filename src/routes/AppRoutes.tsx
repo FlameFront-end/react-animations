@@ -4,6 +4,26 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 
 import { Base, HorizontalScroll, ScrollTriggerExample } from '../demos'
 
+type Route = {
+	title: string
+	href: string
+}
+
+export const routes: Route[] = [
+	{
+		title: 'Base',
+		href: '/'
+	},
+	{
+		title: 'Horizontal Scroll',
+		href: '/horizontal-scroll'
+	},
+	{
+		title: 'Scroll Trigger Example',
+		href: '/scroll-trigger-example'
+	}
+]
+
 const AppRoutes: FC = () => {
 	const location = useLocation()
 

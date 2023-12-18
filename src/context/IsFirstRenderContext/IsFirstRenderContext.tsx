@@ -18,7 +18,7 @@ const IsFirstRenderContext = createContext<IsFirstRenderProps | undefined>(
 export const IsFirstRenderProvider: React.FC<{ children: ReactNode }> = ({
 	children
 }) => {
-	const [isFirstRender, setIsFirstRender] = useState(true)
+	const [isFirstRender, setIsFirstRender] = useState(false)
 
 	useEffect(() => {
 		setTimeout(() => {
