@@ -2,6 +2,8 @@ import { motion, Variants } from 'framer-motion'
 import { FC, ReactNode, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { useIsFirstRender } from '../../context/IsFirstRenderContext/IsFirstRenderContext.tsx'
+
 import './PageTransitions.scss'
 
 const anim = (variants: Variants) => {
@@ -23,6 +25,19 @@ const routes: Routes = {
 	'/scroll-trigger-example': 'Scroll Trigger Example'
 }
 
+const greetings = [
+	{ language: 'Английский', greeting: 'Hello' },
+	{ language: 'Французский', greeting: 'Bonjour' },
+	{ language: 'Испанский', greeting: 'Hola' },
+	{ language: 'Немецкий', greeting: 'Guten Tag' },
+	{ language: 'Итальянский', greeting: 'Ciao' },
+	{ language: 'Русский', greeting: 'Привет' },
+	{ language: 'Китайский', greeting: '你好' },
+	{ language: 'Японский', greeting: 'こんにちは' },
+	{ language: 'Арабский', greeting: 'مرحبا' },
+	{ language: 'Хинди', greeting: 'नमस्ते' }
+]
+
 interface CurveProps {
 	children: ReactNode
 }
@@ -34,6 +49,7 @@ const PageTransitions: FC<CurveProps> = ({ children }) => {
 		width: 0
 	})
 
+	const { isFirstRender } = useIsFirstRender()
 	useEffect(() => {
 		const resize = () => {
 			setDimensions({
@@ -75,9 +91,13 @@ const PageTransitions: FC<CurveProps> = ({ children }) => {
 
 	return (
 		<div className='page curve'>
-			<motion.div {...anim(text)} className='route'>
-				{routes[window.location.pathname]}
-			</motion.div>
+			{isFirstRender ? (
+				<GreetingsComponent />
+			) : (
+				<motion.div {...anim(text)} className='route'>
+					{routes[window.location.pathname]}
+				</motion.div>
+			)}
 			<div
 				style={{ opacity: dimensions.width > 0 ? 0 : 1 }}
 				className='background'
@@ -94,6 +114,8 @@ interface SVGProps {
 }
 
 const SVG: FC<SVGProps> = ({ width, height }) => {
+	const { isFirstRender } = useIsFirstRender()
+
 	const initialPath = `
     M0 300
     Q${width / 2} 0 ${width} 300
@@ -119,7 +141,7 @@ const SVG: FC<SVGProps> = ({ width, height }) => {
 			d: targetPath,
 			transition: {
 				duration: 0.75,
-				delay: 0.3,
+				delay: isFirstRender ? (greetings.length * 300 + 100) / 1000 : 0.3,
 				ease: [0.76, 0, 0.24, 1]
 			}
 		},
@@ -140,7 +162,7 @@ const SVG: FC<SVGProps> = ({ width, height }) => {
 			top: '-100vh',
 			transition: {
 				duration: 0.75,
-				delay: 0.3,
+				delay: isFirstRender ? (greetings.length * 300 + 100) / 1000 : 0.3,
 				ease: [0.76, 0, 0.24, 1]
 			},
 			transitionEnd: {
@@ -165,3 +187,21 @@ const SVG: FC<SVGProps> = ({ width, height }) => {
 }
 
 export default PageTransitions
+
+const GreetingsComponent = () => {
+	const [currentGreeting, setCurrentGreeting] = useState(greetings[0].greeting)
+	useEffect(() => {
+		let count = 1
+		const interval = setInterval(() => {
+			if (count < greetings.length) {
+				setCurrentGreeting(greetings[count].greeting)
+				count++
+			} else {
+				clearInterval(interval)
+			}
+		}, 300)
+		return () => clearInterval(interval)
+	}, [])
+
+	return <motion.div className='route'>{currentGreeting}</motion.div>
+}

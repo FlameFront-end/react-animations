@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-import { useCursorContext } from '../CursorContext/CursorContext.tsx'
+import { useCursorContext } from '../../context/CursorContext/CursorContext.tsx'
 
 const Cursor = () => {
 	const { cursorVariant, cursorSize } = useCursorContext()

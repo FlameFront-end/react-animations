@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useCursorContext } from '../CursorContext/CursorContext.tsx'
+import { useCursorContext } from '../../context/CursorContext/CursorContext.tsx'
 
 import './Nav.scss'
 

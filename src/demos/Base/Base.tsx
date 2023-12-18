@@ -1,9 +1,8 @@
 import gsap from 'gsap'
 import { FC, useLayoutEffect, useRef } from 'react'
 
-import { useCursorContext } from '../../components/CursorContext/CursorContext.tsx'
-
 import { PageTransitions } from '../../components'
+import { useCursorContext } from '../../context/CursorContext/CursorContext.tsx'
 
 import './Base.scss'
 
