@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build ",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
 	},
 	"dependencies": {
 		"framer-motion": "^10.16.16",
@@ -16,18 +17,21 @@
 		"react-router-dom": "^6.21.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.43",
-		"@types/react-dom": "^18.2.17",
+		"@trivago/prettier-plugin-sort-imports": "^4.2.0",
 		"@typescript-eslint/eslint-plugin": "^6.14.0",
 		"@typescript-eslint/parser": "^6.14.0",
+		"@types/react": "^18.2.43",
+		"@types/react-dom": "^18.2.17",
 		"@vitejs/plugin-react": "^4.2.1",
-		"@trivago/prettier-plugin-sort-imports": "^4.2.0",
 		"eslint": "^8.55.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.5",
+		"prettier": "^3.1.1",
 		"sass": "^1.69.5",
+		"stylelint": "^14.5.3",
+		"stylelint-config-rational-order": "^0.1.2",
+		"stylelint-config-standard-scss": "^3.0.0",
 		"typescript": "^5.2.2",
-		"vite": "^5.0.8",
-		"prettier": "^3.1.1"
+		"vite": "^5.0.8"
 	}
 }

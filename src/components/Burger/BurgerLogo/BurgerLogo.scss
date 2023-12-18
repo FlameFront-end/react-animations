@@ -1,45 +1,50 @@
-.button{
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #455CE9;
-  cursor: pointer;
+.button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 120;
   display: flex;
   align-items: center;
   justify-content: center;
-  .burger{
+  width: 80px;
+  height: 80px;
+  background-color: #455ce9;
+  border-radius: 50%;
+  cursor: pointer;
+
+  .burger {
     width: 100%;
-    &::after, &::before{
-      content: "";
+
+    &::after,
+    &::before {
+      position: relative;
       display: block;
-      height: 1px;
       width: 40%;
+      height: 1px;
       margin: auto;
       background-color: white;
-      position: relative;
       transition: transform 0.3s;
+      content: "";
     }
 
-    &::after{
+    &::after {
       top: -5px;
     }
 
-    &::before{
+    &::before {
       top: 5px;
     }
   }
 
-  .burgerActive{
-
-    &::after{
-      transform: rotate(45deg);
+  .burgerActive {
+    &::after {
       top: -1px;
+      transform: rotate(45deg);
     }
 
-    &::before{
+    &::before {
+      top: 0;
       transform: rotate(-45deg);
-      top: 0px;
     }
-
   }
 }

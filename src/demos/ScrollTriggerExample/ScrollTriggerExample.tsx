@@ -12,7 +12,7 @@ const ScrollTriggerExample: FC = () => {
 	useLayoutEffect(() => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
-				trigger: '.section--blue',
+				trigger: '.trigger',
 				start: 'top top',
 				end: 'bottom -=100%',
 				scrub: true,
@@ -31,11 +31,11 @@ const ScrollTriggerExample: FC = () => {
 	return (
 		<PageTransitions>
 			<div className='ScrollTrigger'>
-				<div className='section section section--green'></div>
-				<section className='section section--blue'>
+				<div className='section section '></div>
+				<section className='section trigger'>
 					<div className='square'></div>
 				</section>
-				<div className='section section section--green'></div>
+				<div className='section section'></div>
 			</div>
 		</PageTransitions>
 	)

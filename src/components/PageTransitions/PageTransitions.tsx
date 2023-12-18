@@ -97,5 +97,5 @@ const Greetings = () => {
 		return () => clearInterval(interval)
 	}, [])
 
-	return <motion.div className='route'>{currentGreeting}</motion.div>
+	return <motion.div className='greeting'>{currentGreeting}</motion.div>
 }

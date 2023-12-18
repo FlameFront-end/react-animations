@@ -2,32 +2,20 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
+import { routes } from '../../../routes/AppRoutes.tsx'
 import BurgerCurve from '../BurgerCurve/BurgerCurve.tsx'
 
 import { menuSlide, slide } from './anim.ts'
 import './BurgerMenu.scss'
 
-const navItems = [
-	{
-		title: 'Home',
-		href: '/'
-	},
-	{
-		title: 'Work',
-		href: '/work'
-	},
-	{
-		title: 'About',
-		href: '/about'
-	},
+interface BurgerMenuProps {
+	onClose?: () => void
+}
 
-	{
-		title: 'Contact',
-		href: '/contact'
+const BurgerMenu: FC<BurgerMenuProps> = ({ onClose }) => {
+	const handleLinkClick = () => {
+		onClose && onClose()
 	}
-]
-
-const BurgerMenu: FC = () => {
 	return (
 		<motion.div
 			variants={menuSlide}
@@ -42,7 +30,7 @@ const BurgerMenu: FC = () => {
 						<p>Navigation</p>
 					</div>
 
-					{navItems.map(({ title, href }, index) => (
+					{routes.map(({ title, href }, index) => (
 						<motion.div
 							className='link'
 							variants={slide}
@@ -52,7 +40,9 @@ const BurgerMenu: FC = () => {
 							animate='enter'
 							exit='exit'
 						>
-							<Link to={href}>{title}</Link>
+							<Link to={href} onClick={handleLinkClick}>
+								{title}
+							</Link>
 						</motion.div>
 					))}
 				</div>

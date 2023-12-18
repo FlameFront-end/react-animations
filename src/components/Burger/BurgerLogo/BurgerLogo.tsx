@@ -17,10 +17,10 @@ const BurgerLogo: FC = () => {
 				className='button'
 			>
 				<div className={`burger ${isActive ? 'burgerActive' : ''}`}></div>
-				<AnimatePresence mode='wait'>
-					{isActive && <BurgerMenu />}
-				</AnimatePresence>
 			</div>
+			<AnimatePresence mode='wait'>
+				{isActive && <BurgerMenu onClose={() => setIsActive(false)} />}
+			</AnimatePresence>
 		</>
 	)
 }

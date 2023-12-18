@@ -6,7 +6,7 @@ import AppRoutes from './routes/AppRoutes.tsx'
 function App() {
 	return (
 		<IsFirstRenderProvider>
-			<div className='app'>
+			<div className='container'>
 				<Nav />
 				<AppRoutes />
 			</div>
